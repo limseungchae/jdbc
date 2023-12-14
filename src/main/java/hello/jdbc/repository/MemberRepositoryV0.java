@@ -29,7 +29,8 @@ public class MemberRepositoryV0 {
             con = getConnection();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, member.getMemberId());
-            pstmt.setInt(2,member.getMoney());
+            pstmt.setInt(2, member.getMoney());
+            pstmt.executeUpdate();
             return member;
         } catch (SQLException e) {
             // 입셉션 터지면 log 확인
