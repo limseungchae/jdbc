@@ -81,7 +81,7 @@ public class MemberRepositoryV0 {
 
     // 수정
     public void update(String memberId, int money) throws SQLException {
-        String sql = "update member set member_id=? where money=?";
+        String sql = "update member set money=? where member_id=?";
 
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -89,8 +89,8 @@ public class MemberRepositoryV0 {
         try {
             con = getConnection();
             pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, memberId);
-            pstmt.setInt(2, money);
+            pstmt.setInt(1, money);
+            pstmt.setString(2, memberId);
             pstmt.executeUpdate();
             // 결과값 확인
             int resultSize = pstmt.executeUpdate();
