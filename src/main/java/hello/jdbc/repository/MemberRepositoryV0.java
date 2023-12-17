@@ -106,6 +106,31 @@ public class MemberRepositoryV0 {
         }
     }
 
+    // 삭제
+    public void delete(String memberId) throws SQLException {
+        String sql = "delete from member where member_id=?";
+
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            con = getConnection();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, memberId);
+            pstmt.executeUpdate();
+            // 결과값 확인
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            // 입셉션 터지면 log 확인
+            log.error("db error", e);
+            // 예외를 밖으로 던짐
+            throw e;
+        } finally {
+            // result set은 지금 없으니 null
+            close(con, pstmt, null);
+        }
+    }
+
     private void close(Connection con, Statement stmt, ResultSet rs) {
 
         // 외부 리소스 사용 실제 TCP,IP커넥션 사용 close
