@@ -3,6 +3,7 @@ package hello.jdbc.repository;
 import hello.jdbc.connection.DBConnectionUtility;
 import hello.jdbc.domain.Member;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.support.JdbcUtils;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -138,31 +139,10 @@ public class MemberRepositoryV1 {
 
     private void close(Connection con, Statement stmt, ResultSet rs) {
 
-        // 외부 리소스 사용 실제 TCP,IP커넥션 사용 close
-        // 코드 안정성을 위해서 추가
-        if (rs != null) {
-            try {
-                rs.close(); // SQLException
-            } catch (SQLException e) {
-                log.info("error", e); // 로그로 에러남김
-            }
-        }
+        JdbcUtils.closeResultSet(rs);
+        JdbcUtils.closeStatement(stmt);
+        JdbcUtils.closeConnection(con);
 
-        if (stmt != null) {
-            try {
-                stmt.close();
-            } catch (SQLException e) {
-                log.info("error", e);
-            }
-        }
-
-        if (con != null) {
-            try {
-                con.close();
-            } catch (SQLException e) {
-                log.info("error", e);
-            }
-        }
     }
 
     private Connection getConnection() throws SQLException {
