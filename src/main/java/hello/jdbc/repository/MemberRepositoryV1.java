@@ -168,6 +168,6 @@ public class MemberRepositoryV1 {
     private Connection getConnection() throws SQLException {
         Connection con = dataSource.getConnection();
         log.info("get connection={}, class={}");
-        return DBConnectionUtility.getConnection();
+        return con;
     }
 }
