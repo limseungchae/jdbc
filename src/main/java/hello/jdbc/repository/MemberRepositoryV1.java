@@ -4,6 +4,7 @@ import hello.jdbc.connection.DBConnectionUtility;
 import hello.jdbc.domain.Member;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.NoSuchElementException;
 
@@ -12,6 +13,8 @@ import java.util.NoSuchElementException;
  */
 @Slf4j
 public class MemberRepositoryV1 {
+
+    private final DataSource dataSource;
 
     // 등록
     public Member save(Member member) throws SQLException {
