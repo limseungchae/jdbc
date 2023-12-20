@@ -16,6 +16,10 @@ public class MemberRepositoryV1 {
 
     private final DataSource dataSource;
 
+    public MemberRepositoryV1(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     // 등록
     public Member save(Member member) throws SQLException {
         // sql 작성 : sql 쿼리 알아야함
