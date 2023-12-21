@@ -57,6 +57,13 @@ class MemberRepositoryV1Test {
         repository.delete(member.getMemberId());
         Assertions.assertThatThrownBy(() -> repository.findById(member.getMemberId()))
                 .isInstanceOf(NoSuchElementException.class);
+
+        // 슬립을 걸면 다른 10개 결과나옴 : 현재 스레드 중지(다른스레드 영향줌)
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
