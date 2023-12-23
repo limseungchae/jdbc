@@ -1,5 +1,3 @@
-# JDBC
-
 ## H2 설치 전 버전 확인
 ![h2.png](src%2Fmain%2Fresources%2Ffiles%2Fh2.png)
 
