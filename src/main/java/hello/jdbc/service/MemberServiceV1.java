@@ -19,7 +19,17 @@ public class MemberServiceV1 {
         // 이체를 하는 회원의 잔액 업데이트
         memberRepository.update(fromId, fromMember.getMoney() - money);
 
+        // 오류 케이스
+        validation(toMember);
+
         // 이체를 받는 회원의 잔액 업데이트
         memberRepository.update(toId, toMember.getMoney() + money);
+    }
+
+    // 오류 케이스를 검증하는 메서드.
+    private static void validation(Member toMember) {
+        if(toMember.getMemberId().equals("ex")) {
+            throw new IllegalStateException("에치중 예외 발생");
+        }
     }
 }
