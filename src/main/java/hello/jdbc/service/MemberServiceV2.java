@@ -37,12 +37,10 @@ public class MemberServiceV2 {
             con.commit(); // 성공시 커밋
         } catch (Exception e) {
             con.rollback(); // 실패시 롤백
+            throw new IllegalStateException(e);
         } finally {
 
         }
-
-
-
     }
 
     // 오류 케이스를 검증하는 메서드.
