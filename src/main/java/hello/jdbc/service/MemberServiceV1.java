@@ -12,6 +12,7 @@ public class MemberServiceV1 {
     private final MemberRepositoryV1 memberRepository;
 
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
+        // 트랜잭션 시작
         // 이체를 하는 회원과 받는 회원의 정보 조회
         Member fromMember = memberRepository.findById(fromId);
         Member toMember = memberRepository.findById(toId);
@@ -24,6 +25,7 @@ public class MemberServiceV1 {
 
         // 이체를 받는 회원의 잔액 업데이트
         memberRepository.update(toId, toMember.getMoney() + money);
+        // 커밋, 롤백
     }
 
     // 오류 케이스를 검증하는 메서드.
