@@ -19,6 +19,14 @@ public class MemberServiceV2 {
 
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
         Connection con = dataSource.getConnection();
+        try {
+            con.setAutoCommit(false); //트랜잭션 시작
+            // 비지니스 로직
+        } catch (Exception e) {
+
+        } finally {
+
+        }
 
 
         // 트랜잭션 시작
