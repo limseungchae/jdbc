@@ -64,7 +64,8 @@ public class MemberServiceV1Test {
         memberRepository.save(memberEX);
 
         // when (수행)
-
+        assertThatThrownBy(() -> memberService.accountTransfer(memberA.getMemberId(), memberEX.getMemberId(), 2000))
+                .isInstanceOf(IllegalAccessError.class);
 
         //then (검증)
 
