@@ -149,11 +149,9 @@ public class MemberRepositoryV1 {
     public void update(Connection con, String memberId, int money) throws SQLException {
         String sql = "update member set money=? where member_id=?";
 
-        Connection con = null;
         PreparedStatement pstmt = null;
 
         try {
-            con = getConnection();
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, money);
             pstmt.setString(2, memberId);
@@ -167,8 +165,8 @@ public class MemberRepositoryV1 {
             // 예외를 밖으로 던짐
             throw e;
         } finally {
-            // result set은 지금 없으니 null
-            close(con, pstmt, null);
+            // connection은 여기서 닫지 않는다.
+            JdbcUtils.closeStatement(pstmt);
         }
     }
 
