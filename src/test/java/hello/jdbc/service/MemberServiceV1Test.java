@@ -56,9 +56,12 @@ public class MemberServiceV1Test {
 
     @Test
     @DisplayName("이체중 예외 발생")
-    void accountTransferEX()  {
+    void accountTransferEX() throws SQLException {
         //given (상황)
-
+        Member memberA = new Member(MEMBER_A, 10000);
+        Member memberEX = new Member(MEMBER_EX, 10000);
+        memberRepository.save(memberA);
+        memberRepository.save(memberEX);
 
         // when (수행)
 
