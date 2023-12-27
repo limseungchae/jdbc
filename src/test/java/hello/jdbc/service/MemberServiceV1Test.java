@@ -53,4 +53,17 @@ public class MemberServiceV1Test {
         assertThat(findMemberA.getMoney()).isEqualTo(8000);
         assertThat(findMemberB.getMoney()).isEqualTo(12000);
     }
+
+    @Test
+    @DisplayName("이체중 예외 발생")
+    void accountTransferEX()  {
+        //given (상황)
+
+
+        // when (수행)
+
+
+        //then (검증)
+
+    }
 }
