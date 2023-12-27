@@ -44,6 +44,7 @@ public class MemberServiceV2 {
             if (con != null) {
                 try {
                     con.setAutoCommit(true); // 커넥션 풀 고려
+                    con.close();
                 } catch (Exception e) {
                     log.info("error", e);
                 }
