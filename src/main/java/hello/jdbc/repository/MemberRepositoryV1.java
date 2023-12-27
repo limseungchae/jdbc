@@ -89,13 +89,11 @@ public class MemberRepositoryV1 {
     public Member findById(Connection con, String memberId) throws SQLException {
         String sql = "select * from member where member_id = ?";
 
-        Connection con = null;
         PreparedStatement pstmt = null;
         // select query의 결과를 담고있는 통
         ResultSet rs = null;
 
         try {
-            con = getConnection();
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, memberId);
 
