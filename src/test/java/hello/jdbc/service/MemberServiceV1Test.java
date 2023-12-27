@@ -43,7 +43,7 @@ public class MemberServiceV1Test {
         memberRepository.save(memberB);
 
         // when (수행)
-
+        memberService.accountTransfer(memberA.getMemberId(), memberB.getMemberId(), 2000);
 
         //then (검증)
     }
