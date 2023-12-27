@@ -35,9 +35,8 @@ public class MemberServiceV2 {
             // 이체를 받는 회원의 잔액 업데이트
             memberRepository.update(toId, toMember.getMoney() + money);
             con.commit(); // 성공시 커밋
-
         } catch (Exception e) {
-
+            con.rollback(); // 실패시 롤백
         } finally {
 
         }
