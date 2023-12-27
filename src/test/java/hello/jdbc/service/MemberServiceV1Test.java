@@ -4,6 +4,7 @@ import hello.jdbc.connection.ConnectionConst;
 import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV1;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,14 @@ public class MemberServiceV1Test {
         memberService = new MemberServiceV1(memberRepository);
     }
 
+    // 각각의 테스트 끝날때 after 호출 (리소스 정리)
+    @AfterEach
+    void after() throws SQLException {
+        memberRepository.delete(MEMBER_A);
+        memberRepository.delete(MEMBER_B);
+        memberRepository.delete(MEMBER_EX);
+    }
+
     @Test
     @DisplayName("정상 이체")
     void accountTransfer() throws SQLException {
@@ -63,7 +72,7 @@ public class MemberServiceV1Test {
         memberRepository.save(memberA);
         memberRepository.save(memberEX);
 
-        // when (수행)
+        // when (수행) 및 예외 처리 확인
         assertThatThrownBy(() -> memberService.accountTransfer(memberA.getMemberId(), memberEX.getMemberId(), 2000))
                 .isInstanceOf(IllegalAccessError.class);
 
