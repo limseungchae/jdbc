@@ -25,17 +25,17 @@ public class MemberServiceV2 {
             con.setAutoCommit(false); //트랜잭션 시작
             // 비지니스 로직
             // 이체를 하는 회원과 받는 회원의 정보 조회
-            Member fromMember = memberRepository.findById(fromId);
-            Member toMember = memberRepository.findById(toId);
+            Member fromMember = memberRepository.findById(con, fromId);
+            Member toMember = memberRepository.findById(con, toId);
 
             // 이체를 하는 회원의 잔액 업데이트
-            memberRepository.update(fromId, fromMember.getMoney() - money);
+            memberRepository.update(con, fromId, fromMember.getMoney() - money);
 
             // 오류 케이스
             validation(toMember);
 
             // 이체를 받는 회원의 잔액 업데이트
-            memberRepository.update(toId, toMember.getMoney() + money);
+            memberRepository.update(con, toId, toMember.getMoney() + money);
             con.commit(); // 성공시 커밋
         } catch (Exception e) {
             con.rollback(); // 실패시 롤백
