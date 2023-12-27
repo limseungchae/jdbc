@@ -4,6 +4,8 @@ import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV1;
 import lombok.RequiredArgsConstructor;
 
+import javax.sql.DataSource;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -12,6 +14,7 @@ import java.sql.SQLException;
 @RequiredArgsConstructor
 public class MemberServiceV2 {
 
+    private final DataSource dataSource;
     private final MemberRepositoryV1 memberRepository;
 
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
