@@ -12,6 +12,7 @@ import java.sql.SQLException;
 /**
  * 트랜잭션 - 파라미터 연동, 풀을 고려한 종료
  */
+@Slf4j
 @RequiredArgsConstructor
 public class MemberServiceV2 {
 
@@ -44,7 +45,7 @@ public class MemberServiceV2 {
                 try {
 
                 } catch (Exception e) {
-
+                    log.info("error", e);
                 }
             }
         }
