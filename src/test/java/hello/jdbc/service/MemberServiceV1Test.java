@@ -68,6 +68,9 @@ public class MemberServiceV1Test {
                 .isInstanceOf(IllegalAccessError.class);
 
         //then (검증)
-
+        Member findMemberA = memberRepository.findById(memberA.getMemberId());
+        Member findMemberB = memberRepository.findById(memberEX.getMemberId());
+        assertThat(findMemberA.getMoney()).isEqualTo(8000);
+        assertThat(findMemberB.getMoney()).isEqualTo(10000);
     }
 }
