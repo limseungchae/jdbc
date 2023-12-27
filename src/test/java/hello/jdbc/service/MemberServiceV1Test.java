@@ -3,6 +3,8 @@ package hello.jdbc.service;
 import hello.jdbc.connection.ConnectionConst;
 import hello.jdbc.repository.MemberRepositoryV1;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import static hello.jdbc.connection.ConnectionConst.*;
@@ -26,5 +28,15 @@ public class MemberServiceV1Test {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         memberRepository = new MemberRepositoryV1(dataSource);
         memberService = new MemberServiceV1(memberRepository);
+    }
+
+    @Test
+    @DisplayName("정상 이체")
+    void accountTransfer() {
+        //given
+
+        // when
+
+        //then
     }
 }
