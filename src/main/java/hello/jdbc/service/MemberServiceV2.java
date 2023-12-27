@@ -3,6 +3,7 @@ package hello.jdbc.service;
 import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV1;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -39,7 +40,13 @@ public class MemberServiceV2 {
             con.rollback(); // 실패시 롤백
             throw new IllegalStateException(e);
         } finally {
+            if (con != null) {
+                try {
 
+                } catch (Exception e) {
+
+                }
+            }
         }
     }
 
