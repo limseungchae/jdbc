@@ -1,11 +1,14 @@
 package hello.jdbc.service;
 
 import hello.jdbc.connection.ConnectionConst;
+import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import java.sql.SQLException;
 
 import static hello.jdbc.connection.ConnectionConst.*;
 
@@ -32,11 +35,16 @@ public class MemberServiceV1Test {
 
     @Test
     @DisplayName("정상 이체")
-    void accountTransfer() {
-        //given
+    void accountTransfer() throws SQLException {
+        //given (상황)
+        Member memberA = new Member(MEMBER_A, 10000);
+        Member memberB = new Member(MEMBER_B, 10000);
+        memberRepository.save(memberA);
+        memberRepository.save(memberB);
 
-        // when
+        // when (수행)
 
-        //then
+
+        //then (검증)
     }
 }
