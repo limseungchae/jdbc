@@ -18,6 +18,9 @@ public class MemberServiceV2 {
     private final MemberRepositoryV1 memberRepository;
 
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
+        Connection con = dataSource.getConnection();
+
+
         // 트랜잭션 시작
         // 이체를 하는 회원과 받는 회원의 정보 조회
         Member fromMember = memberRepository.findById(fromId);
