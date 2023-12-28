@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.sql.SQLException;
 import java.util.NoSuchElementException;
@@ -16,9 +14,9 @@ import static hello.jdbc.connection.ConnectionConst.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Slf4j
-class MemberRepositoryV1Test {
+class MemberRepositoryV2Test {
 
-    MemberRepositoryV1 repository;
+    MemberRepositoryV2 repository;
 
     // 각테스트가 실행되기직전 한번만호출
     @BeforeEach
@@ -33,7 +31,7 @@ class MemberRepositoryV1Test {
         dataSource.setUsername(USERNAME);
         dataSource.setPoolName(PASSWORD);
 
-        repository = new MemberRepositoryV1(dataSource);
+        repository = new MemberRepositoryV2(dataSource);
     }
 
     @Test
