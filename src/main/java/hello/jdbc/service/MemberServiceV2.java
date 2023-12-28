@@ -24,7 +24,7 @@ public class MemberServiceV2 {
         try {
             con.setAutoCommit(false); //트랜잭션 시작
             // 비지니스 로직
-            bizLogic(fromId, toId, money, con);
+            bizLogic(con, fromId, toId, money);
             con.commit(); // 성공시 커밋
         } catch (Exception e) {
             con.rollback(); // 실패시 롤백
@@ -35,7 +35,7 @@ public class MemberServiceV2 {
     }
 
     // 비지니스 로직
-    private void bizLogic(String fromId, String toId, int money, Connection con) throws SQLException {
+    private void bizLogic(Connection con, String fromId, String toId, int money) throws SQLException {
         // 이체를 하는 회원과 받는 회원의 정보 조회
         Member fromMember = memberRepository.findById(con, fromId);
         Member toMember = memberRepository.findById(con, toId);
