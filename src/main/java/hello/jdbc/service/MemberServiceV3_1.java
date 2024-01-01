@@ -35,8 +35,6 @@ public class MemberServiceV3_1 {
         } catch (Exception e) {
             transactionManager.rollback(status); // 실패시 롤백
             throw new IllegalStateException(e);
-        } finally {
-            release(con);
         }
     }
 
