@@ -17,12 +17,10 @@ import java.sql.SQLException;
 @RequiredArgsConstructor
 public class MemberServiceV3_1 {
 
-//    private final DataSource dataSource;
     private final PlatformTransactionManager transactionManager;
     private final MemberRepositoryV2 memberRepository;
 
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
-        Connection con = dataSource.getConnection();
         try {
             con.setAutoCommit(false); //트랜잭션 시작
             // 비지니스 로직
