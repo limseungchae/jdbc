@@ -8,7 +8,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import java.sql.SQLException;
 
@@ -35,7 +37,8 @@ public class MemberServiceV3_1Test {
     void before() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         memberRepository = new MemberRepositoryV3(dataSource);
-        memberService = new MemberServiceV3_1(dataSource, memberRepository);
+        PlatformTransactionManager transactionManager = new DataSourceTransactionManager();
+        memberService = new MemberServiceV3_1(transactionManager, memberRepository);
     }
 
     // 각각의 테스트 끝날때 after 호출 (리소스 정리)
