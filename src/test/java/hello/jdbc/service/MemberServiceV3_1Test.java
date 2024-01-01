@@ -2,6 +2,7 @@ package hello.jdbc.service;
 
 import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV2;
+import hello.jdbc.repository.MemberRepositoryV3;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,15 +27,15 @@ public class MemberServiceV3_1Test {
     public static final String MEMBER_B = "memberB";
     public static final String MEMBER_EX = "ex";
 
-    private MemberRepositoryV2 memberRepository;
-    private MemberServiceV2 memberService;
+    private MemberRepositoryV3 memberRepository;
+    private MemberServiceV3_1 memberService;
 
     // 각 테스트 메서드 실행전 초기화(데이터베이스 연결 정보와 서비스 객체를 초기화한다.)
     @BeforeEach
     void before() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
-        memberRepository = new MemberRepositoryV2(dataSource);
-        memberService = new MemberServiceV2(dataSource, memberRepository);
+        memberRepository = new MemberRepositoryV3(dataSource);
+        memberService = new MemberServiceV3_1(dataSource, memberRepository);
     }
 
     // 각각의 테스트 끝날때 after 호출 (리소스 정리)
