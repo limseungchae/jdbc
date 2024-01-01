@@ -2,6 +2,7 @@ package hello.jdbc.service;
 
 import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV2;
+import hello.jdbc.repository.MemberRepositoryV3;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -21,7 +22,7 @@ import java.sql.SQLException;
 public class MemberServiceV3_1 {
 
     private final PlatformTransactionManager transactionManager;
-    private final MemberRepositoryV2 memberRepository;
+    private final MemberRepositoryV3 memberRepository;
 
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
         // 트랜잭션 시작
