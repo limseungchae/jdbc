@@ -2,6 +2,7 @@ package hello.jdbc.repository;
 
 import hello.jdbc.domain.Member;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcUtils;
 
 import javax.sql.DataSource;
@@ -205,7 +206,8 @@ public class MemberRepositoryV3 {
     }
 
     private Connection getConnection() throws SQLException {
-        Connection con = dataSource.getConnection();
+        // 주의! 트랙잭션 동기화를 사용하려면 DataSourceUtils를 사용해야 한다.
+        Connection con = DataSourceUtils.getConnection(dataSource);
         log.info("get connection={}, class={}", con, con.getClass());
         return con;
     }
