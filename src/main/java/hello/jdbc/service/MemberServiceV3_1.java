@@ -29,7 +29,7 @@ public class MemberServiceV3_1 {
 
         try {
             // 비지니스 로직
-            bizLogic(con, fromId, toId, money);
+            bizLogic(fromId, toId, money);
             con.commit(); // 성공시 커밋
         } catch (Exception e) {
             con.rollback(); // 실패시 롤백
@@ -40,19 +40,19 @@ public class MemberServiceV3_1 {
     }
 
     // 비지니스 로직
-    private void bizLogic(Connection con, String fromId, String toId, int money) throws SQLException {
+    private void bizLogic(String fromId, String toId, int money) throws SQLException {
         // 이체를 하는 회원과 받는 회원의 정보 조회
-        Member fromMember = memberRepository.findById(con, fromId);
-        Member toMember = memberRepository.findById(con, toId);
+        Member fromMember = memberRepository.findById(fromId);
+        Member toMember = memberRepository.findById(toId);
 
         // 이체를 하는 회원의 잔액 업데이트
-        memberRepository.update(con, fromId, fromMember.getMoney() - money);
+        memberRepository.update(fromId, fromMember.getMoney() - money);
 
         // 오류 케이스
         validation(toMember);
 
         // 이체를 받는 회원의 잔액 업데이트
-        memberRepository.update(con, toId, toMember.getMoney() + money);
+        memberRepository.update(toId, toMember.getMoney() + money);
     }
 
     // 커넥션을 해제하고 자동 커밋을 활성화하는 메서드
