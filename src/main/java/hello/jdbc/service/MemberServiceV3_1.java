@@ -31,7 +31,7 @@ public class MemberServiceV3_1 {
         try {
             // 비지니스 로직
             bizLogic(fromId, toId, money);
-            con.commit(); // 성공시 커밋
+            transactionManager.commit(status); // 성공시 커밋
         } catch (Exception e) {
             con.rollback(); // 실패시 롤백
             throw new IllegalStateException(e);
