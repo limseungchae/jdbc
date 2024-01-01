@@ -201,7 +201,9 @@ public class MemberRepositoryV3 {
 
         JdbcUtils.closeResultSet(rs);
         JdbcUtils.closeStatement(stmt);
-        JdbcUtils.closeConnection(con);
+        // 주의! 트랜잭션 동기화를 사용하려면 DataSourceUtils를 사용해야 한다.
+        DataSourceUtils.releaseConnection(con, dataSource);
+//        JdbcUtils.closeConnection(con);
 
     }
 
