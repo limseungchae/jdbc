@@ -50,6 +50,11 @@ public class MemberServiceV3_3Test {
         PlatformTransactionManager transactionManager() {
             return new DataSourceTransactionManager(dataSource());
         }
+
+        @Bean
+        MemberRepositoryV3 memberRepositoryV3() {
+            return new MemberRepositoryV3(dataSource());
+        }
     }
 
     // 각 테스트 메서드 실행전 초기화(데이터베이스 연결 정보와 서비스 객체를 초기화한다.)
