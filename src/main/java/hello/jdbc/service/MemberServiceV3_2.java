@@ -15,12 +15,16 @@ import java.sql.SQLException;
  * 트랜잭션 - 트랜잭션 매니저
  */
 @Slf4j
-@RequiredArgsConstructor
 public class MemberServiceV3_2 {
 
 //    private final PlatformTransactionManager transactionManager;
     private final TransactionTemplate txTemplate;
     private final MemberRepositoryV3 memberRepository;
+
+    public MemberServiceV3_2(TransactionTemplate txTemplate, MemberRepositoryV3 memberRepository) {
+        this.txTemplate = txTemplate;
+        this.memberRepository = memberRepository;
+    }
 
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
         // 트랜잭션 시작
