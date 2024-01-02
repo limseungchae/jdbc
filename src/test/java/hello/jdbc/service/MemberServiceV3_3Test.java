@@ -7,6 +7,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -30,7 +31,9 @@ public class MemberServiceV3_3Test {
     public static final String MEMBER_B = "memberB";
     public static final String MEMBER_EX = "ex";
 
+    @Autowired
     private MemberRepositoryV3 memberRepository;
+    @Autowired
     private MemberServiceV3_3 memberService;
 
     // 각 테스트 메서드 실행전 초기화(데이터베이스 연결 정보와 서비스 객체를 초기화한다.)
