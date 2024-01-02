@@ -21,8 +21,8 @@ public class MemberServiceV3_2 {
     private final TransactionTemplate txTemplate;
     private final MemberRepositoryV3 memberRepository;
 
-    public MemberServiceV3_2(TransactionTemplate txTemplate, MemberRepositoryV3 memberRepository) {
-        this.txTemplate = txTemplate;
+    public MemberServiceV3_2(PlatformTransactionManager transactionManager, TransactionTemplate txTemplate, MemberRepositoryV3 memberRepository) {
+        this.txTemplate = new TransactionTemplate(transactionManager);
         this.memberRepository = memberRepository;
     }
 
