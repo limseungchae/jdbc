@@ -3,6 +3,8 @@ package hello.jdbc.service;
 import hello.jdbc.domain.Member;
 import hello.jdbc.repository.MemberRepositoryV3;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.sql.SQLException;
 
 /**
@@ -17,6 +19,7 @@ public class MemberServiceV3_3 {
         this.memberRepository = memberRepository;
     }
 
+    @Transactional
     public void accountTransfer(String fromId, String toId, int money) throws SQLException {
             // 비지니스 로직
             bizLogic(fromId, toId, money);
