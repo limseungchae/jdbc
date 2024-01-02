@@ -36,8 +36,7 @@ public class MemberServiceV3_3Test {
     void before() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         memberRepository = new MemberRepositoryV3(dataSource);
-        PlatformTransactionManager transactionManager = new DataSourceTransactionManager(dataSource);
-        memberService = new MemberServiceV3_3(transactionManager, memberRepository);
+        memberService = new MemberServiceV3_3(memberRepository);
     }
 
     // 각각의 테스트 끝날때 after 호출 (리소스 정리)
