@@ -9,10 +9,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.sql.DataSource;
 import java.sql.SQLException;
 
 import static hello.jdbc.connection.ConnectionConst.*;
@@ -36,13 +39,21 @@ public class MemberServiceV3_3Test {
     @Autowired
     private MemberServiceV3_3 memberService;
 
+    @TestConfiguration
+    static class TestConfig {
+        @Bean
+        DataSource dataSource() {
+            return new DriverManagerDataSource(URL, USERNAME, PASSWORD);
+        }
+    }
+
     // 각 테스트 메서드 실행전 초기화(데이터베이스 연결 정보와 서비스 객체를 초기화한다.)
-    @BeforeEach
+  /*  @BeforeEach
     void before() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         memberRepository = new MemberRepositoryV3(dataSource);
         memberService = new MemberServiceV3_3(memberRepository);
-    }
+    }*/
 
     // 각각의 테스트 끝날때 after 호출 (리소스 정리)
     @AfterEach
