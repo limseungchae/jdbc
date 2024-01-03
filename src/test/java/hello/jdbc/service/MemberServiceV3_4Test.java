@@ -45,7 +45,9 @@ public class MemberServiceV3_4Test {
 
         private final DataSource dataSource;
 
-
+        public TestConfig(DataSource dataSource) {
+            this.dataSource = dataSource;
+        }
 
         @Bean
         MemberRepositoryV3 memberRepositoryV3() {
