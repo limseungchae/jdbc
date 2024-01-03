@@ -7,6 +7,14 @@ import static hello.jdbc.exception.basic.CheckedAppTest.NetworkClient.*;
 
 public class CheckedAppTest {
 
+    static class Controller {
+        Service service = new Service();
+
+        public void request() throws SQLException, ConnectException {
+            service.logic();
+        }
+    }
+
     static class Service {
         Repository repository = new Repository();
         NetworkClient networkClient = new NetworkClient();
