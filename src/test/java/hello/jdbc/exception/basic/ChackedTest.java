@@ -1,8 +1,11 @@
 package hello.jdbc.exception.basic;
 
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Repository;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Slf4j
 public class ChackedTest {
@@ -11,6 +14,14 @@ public class ChackedTest {
     void checked_catch() {
         Service service = new Service();
         service.callCatch();
+    }
+
+    @Test
+    void checked_throw() {
+        Service service = new Service();
+        assertThatThrownBy(() -> service.callThrow())
+                .isInstanceOf(MyCheckedExeption.class);
+
     }
 
     /**
@@ -39,6 +50,15 @@ public class ChackedTest {
                 // 예외 처리 로직
                 log.info("예외처리, message={}", e.getMessage(), e);
             }
+        }
+
+        /**
+         * 체크 예외를 밖으로 던지는 코드
+         * 체크 예외는 예외를 잡지 않고 밖으로 throws 예외를 메서드에 필수로 선언해야한다.
+         * @throws MyCheckedExeption
+         */
+        public void callThrow() throws MyCheckedExeption {
+            repository.call();;
         }
 
     }
