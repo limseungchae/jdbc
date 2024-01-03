@@ -19,6 +19,8 @@ public class UnckeckedTset {
     void unchecked_throw() {
         Service service = new Service();
         service.callThrow();
+        assertThatThrownBy(() -> service.callThrow())
+                .isInstanceOf(MyUncheckedException.class);
     }
 
     /**
