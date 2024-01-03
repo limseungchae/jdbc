@@ -42,15 +42,6 @@ public class MemberServiceV3_4Test {
 
     @TestConfiguration
     static class TestConfig {
-        @Bean
-        DataSource dataSource() {
-            return new DriverManagerDataSource(URL, USERNAME, PASSWORD);
-        }
-
-        @Bean
-        PlatformTransactionManager transactionManager() {
-            return new DataSourceTransactionManager(dataSource());
-        }
 
         @Bean
         MemberRepositoryV3 memberRepositoryV3() {
