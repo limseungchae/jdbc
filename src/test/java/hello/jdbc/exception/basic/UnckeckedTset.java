@@ -1,5 +1,8 @@
 package hello.jdbc.exception.basic;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class UnckeckedTset {
 
     /**
@@ -19,8 +22,16 @@ public class UnckeckedTset {
     static class Service {
         Repository repository = new Repository();
 
+        /**
+         * 필요한 경우 예외를 잡아서 처리하면 된다.
+         */
         public void callCatch() {
-            repository.call();
+            try {
+                repository.call();
+            } catch (MyUncheckedException e) {
+                // 예외 처리 로직
+                log.info("예외 처리, message={}",e.getMessage(), e);
+            }
         }
     }
 
