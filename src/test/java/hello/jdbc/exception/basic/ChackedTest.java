@@ -19,6 +19,9 @@ public class ChackedTest {
     }
 
     static class Repository {
+        public void call() throws MyCheckedExeption {
+            throw new MyCheckedExeption("ex");
+        }
 
     }
 }
