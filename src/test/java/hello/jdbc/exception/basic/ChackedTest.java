@@ -1,10 +1,17 @@
 package hello.jdbc.exception.basic;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Repository;
 
 @Slf4j
 public class ChackedTest {
+
+    @Test
+    void checked_catch() {
+        Service service = new Service();
+        service.callCatch();
+    }
 
     /**
      * Exception을 상속받은 예외는 체크 예외가 된다.
