@@ -1,9 +1,16 @@
 package hello.jdbc.exception.basic;
 
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 
 @Slf4j
 public class UnckeckedTset {
+
+    @Test
+    void unchecked_catch() {
+        Service service = new Service();
+        service.callCatch();
+    }
 
     /**
      * RuntimeException을 상속받은 예외는 언체크 예외가 된다.
