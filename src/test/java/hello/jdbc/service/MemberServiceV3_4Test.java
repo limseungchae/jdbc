@@ -43,6 +43,10 @@ public class MemberServiceV3_4Test {
     @TestConfiguration
     static class TestConfig {
 
+        private final DataSource dataSource;
+
+
+
         @Bean
         MemberRepositoryV3 memberRepositoryV3() {
             return new MemberRepositoryV3(dataSource());
