@@ -1,11 +1,22 @@
 package hello.jdbc.exception.basic;
 
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import java.net.ConnectException;
 import java.sql.SQLException;
 
 import static hello.jdbc.exception.basic.CheckedAppTest.NetworkClient.*;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CheckedAppTest {
+
+    @Test
+    void checked() {
+        Controller controller = new Controller();
+        assertThatThrownBy(() -> controller.request())
+                .isInstanceOf(Exception.class);
+    }
 
     static class Controller {
         Service service = new Service();
