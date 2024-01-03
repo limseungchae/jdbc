@@ -1,6 +1,7 @@
 package hello.jdbc.exception.basic;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
 
 @Slf4j
 public class ChackedTest {
@@ -15,6 +16,18 @@ public class ChackedTest {
     }
 
     static class Service {
+        Repository repository = new Repository();
+
+        /**
+         * 예외를 잡아서 처리하는 코드
+         */
+        public void callCatch() {
+            try {
+                repository.call();
+            } catch (MyCheckedExeption e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
 
