@@ -15,6 +15,10 @@ public class ChackedTest {
         }
     }
 
+    /**
+     * Checked 예외는
+     * 예외를 잡아서 처리하거나, 던지거나 둘중 하나를 필수로 선택해야 한다.
+     */
     static class Service {
         Repository repository = new Repository();
 
@@ -25,7 +29,8 @@ public class ChackedTest {
             try {
                 repository.call();
             } catch (MyCheckedExeption e) {
-                throw new RuntimeException(e);
+                // 예외 처리 로직
+                log.info("예외처리, message={}", e.getMessage(), e);
             }
         }
 
