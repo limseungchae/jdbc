@@ -11,4 +11,9 @@ public class UnckeckedTset {
         }
     }
 
+    static class Repository {
+        public void call() {
+            throw new MyUncheckedException("ex");
+        }
+    }
 }
