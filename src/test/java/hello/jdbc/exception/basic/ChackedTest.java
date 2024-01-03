@@ -13,4 +13,12 @@ public class ChackedTest {
             super(message);
         }
     }
+
+    static class Service {
+
+    }
+
+    static class Repository {
+
+    }
 }
