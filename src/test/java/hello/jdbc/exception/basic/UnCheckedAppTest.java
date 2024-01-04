@@ -45,5 +45,11 @@ public class UnCheckedAppTest {
                 throw new SQLException("ex");
             }
         }
+
+        static class RuntimeConnectException extends RuntimeException {
+            public RuntimeConnectException(String message) {
+                super(message);
+            }
+        }
     }
 }
