@@ -51,5 +51,11 @@ public class UnCheckedAppTest {
                 super(message);
             }
         }
+
+        static class RuntimSQLException extends RuntimeException {
+            public RuntimSQLException(String message) {
+                super(message);
+            }
+        }
     }
 }
