@@ -36,8 +36,8 @@ public class UnCheckedAppTest {
     }
 
     static class NetworkClient {
-        public void call() throws ConnectException {
-            throw new ConnectException("연결 실패");
+        public void call() {
+            throw new RuntimeConnectException("연결 실패");
         }
 
         static class Repository {
