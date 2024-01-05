@@ -1,6 +1,7 @@
 package hello.jdbc.repository;
 
 import hello.jdbc.domain.Member;
+import hello.jdbc.repository.ex.MyDbException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.JdbcUtils;
@@ -45,10 +46,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
             pstmt.executeUpdate();
             return member;
         } catch (SQLException e) {
-            // 입셉션 터지면 log 확인
-            log.error("db error", e);
-            // 예외를 밖으로 던짐
-            throw e;
+            throw new MyDbException(e);
         } finally {
             // result set은 지금 없으니 null
             close(con, pstmt, null);
@@ -83,8 +81,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
             }
 
         } catch (SQLException e) {
-            log.error("db error", e);
-            throw e;
+            throw new MyDbException(e);
         } finally {
             close(con, pstmt, rs);
         }
@@ -108,10 +105,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
             int resultSize = pstmt.executeUpdate();
             log.info("resultSize={}", resultSize);
         } catch (SQLException e) {
-            // 입셉션 터지면 log 확인
-            log.error("db error", e);
-            // 예외를 밖으로 던짐
-            throw e;
+            throw new MyDbException(e);
         } finally {
             // result set은 지금 없으니 null
             close(con, pstmt, null);
@@ -134,10 +128,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
             // 결과값 확인
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            // 입셉션 터지면 log 확인
-            log.error("db error", e);
-            // 예외를 밖으로 던짐
-            throw e;
+            throw new MyDbException(e);
         } finally {
             // result set은 지금 없으니 null
             close(con, pstmt, null);
