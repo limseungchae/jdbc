@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class UnCheckedAppTest {
 
     @Test
-    void checked() {
+    void unchecked() {
         Controller controller = new Controller();
         assertThatThrownBy(() -> controller.request())
                 .isInstanceOf(Exception.class);
