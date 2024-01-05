@@ -42,8 +42,11 @@ public class UnCheckedAppTest {
 
         static class Repository {
             public void call() {
-                runSQL();
-
+                try {
+                    runSQL();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
 
             public void runSQL () throws SQLException {
