@@ -25,7 +25,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
     }
 
     // 등록
-    public Member save(Member member) throws SQLException {
+    public Member save(Member member) {
         // sql 작성 : sql 쿼리 알아야함
         String sql = "insert into member(member_id, money) values (?, ?)";
 
@@ -56,7 +56,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
     }
 
     // 조회
-    public Member findById(String memberId) throws SQLException {
+    public Member findById(String memberId) {
         String sql = "select * from member where member_id = ?";
 
         Connection con = null;
@@ -89,7 +89,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
     }
 
     // 수정
-    public void update(String memberId, int money) throws SQLException {
+    public void update(String memberId, int money) {
         String sql = "update member set money=? where member_id=?";
 
         Connection con = null;
@@ -116,7 +116,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
     }
 
     // 삭제
-    public void delete(String memberId) throws SQLException {
+    public void delete(String memberId) {
         String sql = "delete from member where member_id=?";
 
         Connection con = null;
