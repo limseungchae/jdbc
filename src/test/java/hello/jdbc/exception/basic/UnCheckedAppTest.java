@@ -41,7 +41,11 @@ public class UnCheckedAppTest {
         }
 
         static class Repository {
-            public void call() throws SQLException {
+            public void call() {
+
+            }
+
+            public void runSQL () throws SQLException {
                 throw new SQLException("ex");
             }
         }
