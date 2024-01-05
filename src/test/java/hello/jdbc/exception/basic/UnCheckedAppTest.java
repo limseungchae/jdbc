@@ -42,6 +42,7 @@ public class UnCheckedAppTest {
 
         static class Repository {
             public void call() {
+                runSQL();
 
             }
 
