@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
  * throws SQLException 제거
  */
 @Slf4j
-public class MemberRepositoryV4_1 {
+public class MemberRepositoryV4_1 implements MemberRepository {
 
     private final DataSource dataSource;
 
