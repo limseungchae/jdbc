@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.net.ConnectException;
 import java.sql.SQLException;
 
-import static hello.jdbc.exception.basic.CheckedAppTest.NetworkClient.Repository;
+import hello.jdbc.exception.basic.UnCheckedAppTest.NetworkClient.Repository;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class UnCheckedAppTest {
@@ -29,7 +29,7 @@ public class UnCheckedAppTest {
         Repository repository = new Repository();
         NetworkClient networkClient = new NetworkClient();
 
-        public void logic() throws SQLException, ConnectException {
+        public void logic() {
             repository.call();
             networkClient.call();
         }
