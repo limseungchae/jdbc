@@ -45,7 +45,7 @@ public class UnCheckedAppTest {
                 try {
                     runSQL();
                 } catch (SQLException e) {
-                    e.printStackTrace();
+                    throw new RuntimSQLException();
                 }
             }
 
