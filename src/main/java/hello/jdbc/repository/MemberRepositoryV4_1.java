@@ -24,6 +24,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
         this.dataSource = dataSource;
     }
 
+    @Override
     // 등록
     public Member save(Member member) {
         // sql 작성 : sql 쿼리 알아야함
@@ -55,6 +56,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
 
     }
 
+    @Override
     // 조회
     public Member findById(String memberId) {
         String sql = "select * from member where member_id = ?";
@@ -88,6 +90,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
         }
     }
 
+    @Override
     // 수정
     public void update(String memberId, int money) {
         String sql = "update member set money=? where member_id=?";
@@ -115,6 +118,7 @@ public class MemberRepositoryV4_1 implements MemberRepository {
         }
     }
 
+    @Override
     // 삭제
     public void delete(String memberId) {
         String sql = "delete from member where member_id=?";
