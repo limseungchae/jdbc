@@ -6,6 +6,7 @@ import hello.jdbc.repository.ex.MyDbException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.jdbc.support.JdbcUtils;
@@ -30,6 +31,12 @@ public class ExTranslatorV1Test {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         repository = new Repository(dataSource);
         service = new Service(repository);
+    }
+
+    @Test
+    void duplicateKeySave() {
+        service.create("myId");
+        service.create("myId"); // 같은 ID 저장 시도
     }
 
     @Slf4j
@@ -78,13 +85,12 @@ public class ExTranslatorV1Test {
                 if (e.getErrorCode() == 23505) {
                     throw new MyDbException(e);
                 }
-
+                throw new MyDbException(e);
             } finally {
                 JdbcUtils.closeStatement(pstmt);
                 JdbcUtils.closeConnection(con);
 
             }
         }
-
     }
 }
