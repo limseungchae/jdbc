@@ -21,7 +21,14 @@ public class ExTranslatorV1Test {
     static class Service {
         private final Repository repository;
 
-
+        public void create(String memberId) {
+            try {
+                repository.save(new Member(memberId, 0));
+                log.info("saveId={}", memberId);
+            } catch (MyDbException e) {
+                log.info("키 중복, 복구 시도");
+            }
+        }
     }
 
     @RequiredArgsConstructor
