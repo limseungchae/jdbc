@@ -16,6 +16,12 @@ import java.sql.SQLException;
 @Slf4j
 public class ExTranslatorV1Test {
 
+    @Slf4j
+    @RequiredArgsConstructor
+    static class Service {
+
+    }
+
     @RequiredArgsConstructor
     static class Repository {
         private final DataSource dataSource;
