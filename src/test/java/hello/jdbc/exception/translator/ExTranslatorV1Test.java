@@ -19,6 +19,8 @@ public class ExTranslatorV1Test {
     @Slf4j
     @RequiredArgsConstructor
     static class Service {
+        private final Repository repository;
+
 
     }
 
