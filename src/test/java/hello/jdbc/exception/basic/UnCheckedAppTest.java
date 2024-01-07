@@ -3,7 +3,6 @@ package hello.jdbc.exception.basic;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
-import java.net.ConnectException;
 import java.sql.SQLException;
 
 import hello.jdbc.exception.basic.UnCheckedAppTest.NetworkClient.Repository;
