@@ -26,11 +26,14 @@ public class ExTranslatorV1Test {
             try {
                 repository.save(new Member(memberId, 0));
                 log.info("saveId={}", memberId);
-            } catch (MyDbException e) {
+            } catch (DuplicateKeyException e) {
                 log.info("키 중복, 복구 시도");
                 String retryId = gennerateNewId(memberId);
                 log.info("retryId={}", retryId);
                 repository.save(new Member(retryId, 0));
+            } catch (MyDbException e) {
+                log.info("데이터 접근 계층 예외", e);
+                throw e;
             }
         }
         private String gennerateNewId(String memberId) {
