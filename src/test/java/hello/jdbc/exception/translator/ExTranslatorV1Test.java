@@ -12,6 +12,7 @@ import java.security.KeyException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Random;
 
 @Slf4j
 public class ExTranslatorV1Test {
@@ -29,6 +30,10 @@ public class ExTranslatorV1Test {
                 log.info("키 중복, 복구 시도");
             }
         }
+        private String gennerateNewId(String memberId) {
+            return memberId + new Random().nextInt(10000);
+        }
+
     }
 
     @RequiredArgsConstructor
