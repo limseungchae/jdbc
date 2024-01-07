@@ -81,7 +81,7 @@ public class ExTranslatorV1Test {
                 pstmt.executeUpdate();
                 return member;
             } catch (SQLException e) {
-                // h2 db
+                // h2 db // mysql 1062
                 if (e.getErrorCode() == 23505) {
                     throw new MyDbException(e);
                 }
