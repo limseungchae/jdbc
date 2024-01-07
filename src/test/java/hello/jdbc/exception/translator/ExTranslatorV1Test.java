@@ -28,6 +28,9 @@ public class ExTranslatorV1Test {
                 log.info("saveId={}", memberId);
             } catch (MyDbException e) {
                 log.info("키 중복, 복구 시도");
+                String retryId = gennerateNewId(memberId);
+                log.info("retryId={}", retryId);
+                repository.save(new Member(retryId, 0));
             }
         }
         private String gennerateNewId(String memberId) {
